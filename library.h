@@ -11,10 +11,11 @@ class Library
         void Add(Book book);
         void Delete(int id);
         void Modify(int id, Book book);
-        Book * Search(/*! idk develop a solution */);
-        void Sort(string attr, bool ascending = true);
+        int * Search(/*! idk develop a solution */);
+        void Sort(int attr, bool ascending = true);
         bool Issue(string isbn);
         bool Return(string isbn);
+        Book getBook(int id);
 };
 
 #endif // LIBRARY_H

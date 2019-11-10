@@ -1,7 +1,7 @@
 #include "book.h"
 #include <sstream>
 
-Book::Book(string author, string title, int year, string isbn, string publisher, string llc, int num)
+Book::Book(string author, string title, string year, string isbn, string publisher, string llc, int num)
 {
     this->author = author;
     this->title = title;
@@ -32,12 +32,12 @@ string Book::getTitle()
     return this->title;
 }
 
-void Book::setYear(int year)
+void Book::setYear(string year)
 {
     this->year = year;
 }
 
-int Book::getYear()
+string Book::getYear()
 {
     return this->year;
 }
@@ -85,6 +85,6 @@ int Book::getNum()
 string Book::toString()
 {
     Book book = *this;
-    return book.getAuthor() + ", " + book.getTitle + ", " + static_cast<ostringstream*>( &(ostringstream() << book.getYear()) )->str() + ", " + book.getIsbn() + ", "
+    return book.getAuthor() + ", " + book.getTitle() + ", " + book.getYear() + ", " + book.getIsbn() + ", "
         + book.getPublisher() + ", " + book.getLlc() + ", " + "Stock: " + static_cast<ostringstream*>( &(ostringstream() << book.getNum()) )->str();
 }

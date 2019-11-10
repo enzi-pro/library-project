@@ -9,19 +9,19 @@ class Book
     private:
         string author;
         string title;
-        int year;
+        string year;
         string isbn;
         string publisher;
         string llc;
         int num;
     public:
-        Book(string author, string title, int year, string isbn, string publisher, string llc, int num);
+        Book(string author, string title, string year, string isbn, string publisher, string llc, int num);
         void setAuthor(string author);
         string getAuthor();
         void setTitle(string title);
         string getTitle();
-        void setYear(int year);
-        int getYear();
+        void setYear(string year);
+        string getYear();
         void setIsbn(string isbn);
         string getIsbn();
         void setPublisher(string publisher);

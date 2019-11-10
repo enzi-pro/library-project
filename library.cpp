@@ -20,17 +20,17 @@ void Library::Modify(int id, Book book)
     //! maksut: the function should get an id of the element (index starts from 0) to be modified and replace it with the inputted book instance
 }
 
-Book * Library::Search(/*! idk develop a solution */)
+int * Library::Search(/*! idk develop a solution */)
 {
-    //! person_1: the function should get (1-6) attributes for author, title, year, isbn, publisher and llc
+    //! temirlan: the function should get (1-6) attributes for author, title, year, isbn, publisher and llc
     //! idk how to implement the getting of the functions, come up with a solution and lets discuss it in our whatsapp group
     //! when you check the strings use string.find(value)!=string::npos (google find() method online), instead of ==
-    //! returns the findings as an array of book instances
+    //! returns the findings as an array of book ids in the books
 }
 
-void Library::Sort(string attr, bool ascending = true)
+void Library::Sort(int attr, bool ascending = true)
 {
-    //! person_2: the function should get the attribute (100% one of author, title, year, isbn, publisher, llc)
+    //! yerdaulet: the function should get the attribute id (1 author, 2 title, 3 year, 4 isbn, 5 publisher, 6 llc)
     //! and sort the books of this instance
     //! if ascending it should sort in ascending order, if NOT ascending it should sort in descending order
 }
@@ -47,4 +47,9 @@ bool Library::Return(string isbn)
     //! maksut: the function should get the isbn number and increment the num of the book instance found in the db using search() function
     //! returns false if the book was not found, otherwise return true
     return true;
+}
+
+Book Library::getBook(int id)
+{
+    return books[id];
 }
