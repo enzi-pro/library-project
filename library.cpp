@@ -2,7 +2,7 @@
 
 Library::Library(string file)
 {
-    //! maksut: read the file inputted to the books array
+    //! gotovo maksut: read the file inputted to the books array
 }
 
 void Library::Add(Book book)
