@@ -7,7 +7,7 @@ Library::Library(string file)
 
 void Library::Add(Book book)
 {
-    //! SALAM maksut: the function should get a book instance and append it to the end of the books array
+    //! maksut: the function should get a book instance and append it to the end of the books array
 }
 
 void Library::Delete(int id)
