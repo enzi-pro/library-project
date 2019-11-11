@@ -37,14 +37,14 @@ void Library::Sort(int attr, bool ascending = true)
 
 bool Library::Issue(string isbn)
 {
-    //! maksut: the function should get the isbn number and decrement the num of the book instance found in the db using search() function
+    //! nurmukh: the function should get the isbn number and decrement the num of the book instance found in the db using search() function
     //! returns true if there is 1 or more num in the book, returns false if the book was not found or its num is 0
     return true;
 }
 
 bool Library::Return(string isbn)
 {
-    //! maksut: the function should get the isbn number and increment the num of the book instance found in the db using search() function
+    //! nurmukh: the function should get the isbn number and increment the num of the book instance found in the db using search() function
     //! returns false if the book was not found, otherwise return true
     return true;
 }

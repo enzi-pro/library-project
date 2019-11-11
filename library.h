@@ -5,7 +5,7 @@
 class Library
 {
     private:
-        Book books[];
+        Book * books;
     public:
         Library(string file);
         void Add(Book book);
