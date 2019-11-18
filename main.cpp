@@ -8,6 +8,7 @@ using namespace std;
 int main()
 {
     string input;
+    //Add sort
     bool repeat_1 = false;
     bool repeat_2 = false;
     do
