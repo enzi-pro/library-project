@@ -31,7 +31,7 @@ Library::Library(string file_path)
     vector<string> lines;
     fstream file(file_path, ios::in);
     if(!file){
-        cout<<"ERROR"; // raise error different method
+        cout<<"Sorry, this file does not exist"; // raise error different method
     }
     for (int i=0;i<=127;i++)
     {
