@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1574088775 source:c:\prog\eng_101\library-project\book.cpp
+	"book.h"
+	<sstream>
+	<cstdlib>
+
+1574087568 c:\prog\eng_101\library-project\book.h
+	<string>
+
+1574088160 source:c:\prog\eng_101\library-project\main.cpp
+	"library.h"
+	<iostream>
+	<cstdlib>
+	<sstream>
+
+1574088664 c:\prog\eng_101\library-project\library.h
+	"book.h"
+	<vector>
+	<fstream>
+	<iostream>
+
+1574088692 source:c:\prog\eng_101\library-project\library.cpp
+	"library.h"
+	<string>
+	<vector>
+	<fstream>
+	<iostream>
+

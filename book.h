@@ -7,6 +7,7 @@ using namespace std;
 class Book
 {
     private:
+        int id;
         string author;
         string title;
         string year;
@@ -15,7 +16,10 @@ class Book
         string llc;
         int num;
     public:
-        Book(string author, string title, string year, string isbn, string publisher, string llc, int num);
+        Book(int id, string author, string title, string year, string isbn, string publisher, string llc, string num);
+        void setId(int id);
+        void setId(string id);
+        string getId();
         void setAuthor(string author);
         string getAuthor();
         void setTitle(string title);
@@ -29,7 +33,8 @@ class Book
         void setLlc(string llc);
         string getLlc();
         void setNum(int num);
-        int getNum();
+        void setNum(string num);
+        string getNum();
         string toString();
 };
 

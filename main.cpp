@@ -12,11 +12,11 @@ int main()
     bool repeat_2 = false;
     do
     {
-        cout << "Enter the path to the xls file >>" << endl;
+        cout << "Enter the path to the csv file >>" << endl;
         cin >> input;
         Library library(input);
-        string author, title, year, isbn, publisher, llc;
-        int num, id;
+        string author, title, year, isbn, publisher, llc, num;
+        int id;
         cout << "List of available commands:" << endl;
         cout << "1: Add" << endl;
         cout << "2: Delete" << endl;
@@ -25,6 +25,7 @@ int main()
         cout << "5: Sort" << endl;
         cout << "6: Issue" << endl;
         cout << "7: Return" << endl;
+        cout << "8: Output the library" << endl;
         cout << "Type in the command number >>" << endl;
         int command, element;
         cin >> command;
@@ -45,7 +46,7 @@ int main()
             cin >> llc;
             cout << "Type in the number of these books in stock >>" << endl;
             cin >> num;
-            library.Add(Book(author, title, year, isbn, publisher, llc, num));
+            library.Add(Book(library.getCount() + 1, author, title, year, isbn, publisher, llc, num));
             break;
         case 2:
             cout << "Choose the book to be deleted. Enter its ID in the database (0 indexed)" << endl;
@@ -60,21 +61,14 @@ int main()
             id = atoi(input.c_str());
             do
             {
-                author = library.getBook(id).getAuthor();
-                title = library.getBook(id).getTitle();
-                year = library.getBook(id).getYear();
-                isbn = library.getBook(id).getIsbn();
-                publisher = library.getBook(id).getPublisher();
-                llc = library.getBook(id).getLlc();
-                num = library.getBook(id).getNum();
                 cout << "Choose the element to be modified" << endl;
-                cout << "1: Author = " << author << endl;
-                cout << "2: Title = " << title << endl;
-                cout << "3: Year = " << year << endl;
-                cout << "4: ISBN = " << isbn << endl;
-                cout << "5: Publisher = " << publisher << endl;
-                cout << "6: LLC = " << llc << endl;
-                cout << "7: Stock number = " << static_cast<ostringstream*>( &(ostringstream() << num) )->str() << endl;
+                cout << "1: Author = " << library.getBook(id).getAuthor() << endl;
+                cout << "2: Title = " << library.getBook(id).getTitle() << endl;
+                cout << "3: Year = " << library.getBook(id).getYear() << endl;
+                cout << "4: ISBN = " << library.getBook(id).getIsbn() << endl;
+                cout << "5: Publisher = " << library.getBook(id).getPublisher() << endl;
+                cout << "6: LLC = " << library.getBook(id).getLlc() << endl;
+                cout << "7: Stock number = " << static_cast<ostringstream*>( &(ostringstream() << library.getBook(id).getNum()) )->str() << endl;
                 cout << "Type in the element number >>" << endl;
                 cin >> element;
                 switch (element)
@@ -82,31 +76,31 @@ int main()
                     case 1:
                         cout << "Enter the new author >>" << endl;
                         getline(cin, input);
-                        author = input;
+                        library.getBook(id).setAuthor(input);
                     case 2:
                         cout << "Enter the new title >>" << endl;
                         getline(cin, input);
-                        title = input;
+                        library.getBook(id).setTitle(input);
                     case 3:
                         cout << "Enter the new year >>" << endl;
                         getline(cin, input);
-                        year = input;
+                        library.getBook(id).setAuthor(input);
                     case 4:
                         cout << "Enter the new ISBN >>" << endl;
                         getline(cin, input);
-                        isbn = input;
+                        library.getBook(id).setIsbn(input);
                     case 5:
                         cout << "Enter the new publisher >>" << endl;
                         getline(cin, input);
-                        publisher = input;
+                        library.getBook(id).setPublisher(input);
                     case 6:
                         cout << "Enter the new LLC >>" << endl;
                         getline(cin, input);
-                        llc = input;
+                        library.getBook(id).setLlc(input);
                     case 7:
                         cout << "Enter the number of these books in stock >>" << endl;
                         getline(cin, input);
-                        num = atoi(input.c_str());
+                        library.getBook(id).setNum(input);
                     default:
                         cout << "There is no such element" << endl;
                         break;
@@ -115,10 +109,10 @@ int main()
                 cin >> input;
                 repeat_2 = input == "y";
             } while (repeat_2);
-            library.Modify(id, Book(author, title, year, isbn, publisher, llc, num));
             break;
+            /*
         case 4:
-            //! in the works
+            in the works
             break;
         case 5:
             cout << "Choose the element to be used as the sorting attribute" << endl;
@@ -155,6 +149,13 @@ int main()
             } else
             {
                 cout << "This book could not be found in the database" << endl;
+            }
+            break;
+            */
+        case 8:
+            for(int j = 1; j < library.getCount(); j++)
+            {
+                cout<<library.getBook(j).toString()<<endl;
             }
             break;
         default:

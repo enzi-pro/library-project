@@ -1,15 +1,34 @@
 #include "book.h"
 #include <sstream>
+#include <cstdlib>
 
-Book::Book(string author, string title, string year, string isbn, string publisher, string llc, int num)
+using namespace std;
+
+Book::Book(int id, string author, string title, string year, string isbn, string publisher, string llc, string num)
 {
+    this->id = id;
     this->author = author;
     this->title = title;
     this->year = year;
     this->isbn = isbn;
     this->publisher = publisher;
     this->llc = llc;
-    this->num = num;
+    this->num = atoi(num.c_str());
+}
+
+void Book::setId(int id)
+{
+    this->id = id;
+}
+
+void Book::setId(string id)
+{
+    this->id = atoi(id.c_str());;
+}
+
+string Book::getId()
+{
+    return static_cast<ostringstream*>( &(ostringstream() << this->id) )->str();
 }
 
 void Book::setAuthor(string author)
@@ -77,14 +96,19 @@ void Book::setNum(int num)
     this->num = num;
 }
 
-int Book::getNum()
+void Book::setNum(string num)
 {
-    return this->num;
+    this->num = atoi(num.c_str());;
+}
+
+string Book::getNum()
+{
+    return static_cast<ostringstream*>( &(ostringstream() << this->num) )->str();
 }
 
 string Book::toString()
 {
     Book book = *this;
-    return book.getAuthor() + ", " + book.getTitle() + ", " + book.getYear() + ", " + book.getIsbn() + ", "
-        + book.getPublisher() + ", " + book.getLlc() + ", " + "Stock: " + static_cast<ostringstream*>( &(ostringstream() << book.getNum()) )->str();
+    return book.getId() + ": " + book.getAuthor() + ", " + book.getTitle() + ", " + book.getYear() + ", " + book.getIsbn() + ", "
+        + book.getPublisher() + ", " + book.getLlc() + ", " + "Stock: " + book.getNum();
 }
