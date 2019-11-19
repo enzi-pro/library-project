@@ -3,6 +3,7 @@
 #include <vector>
 #include <fstream>
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -49,6 +50,10 @@ void Library::Add(Book book)
 void Library::Delete(int id)
 {
     books.erase(books.begin() + id);
+    for(int j = id; j <= this->getCount(); j++)
+    {
+        books[j].setId(atoi(books[j].getId().c_str()) - 1);
+    }
 }
 
 /*

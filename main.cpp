@@ -8,7 +8,6 @@ using namespace std;
 int main()
 {
     string input;
-    //Add sort
     bool repeat_1 = false;
     bool repeat_2 = false;
     cout << "Enter the path to the csv file >>" << endl;
@@ -51,14 +50,18 @@ int main()
             break;
         case 2:
             cout << "Choose the book to be deleted. Enter its ID in the database (0 indexed)" << endl;
-            cout << "*If you do not know the ID of the use the search command (enter exit to return) >>" << endl;
+            cout << "*If you do not know the ID of the use the search command (enter exit to terminate) >>" << endl;
             cin >> input;
+            if (input == "exit")
+                break;
             library.Delete(atoi(input.c_str()));
             break;
         case 3:
             cout << "Choose the book to be modified. Enter its ID in the database (0 indexed)" << endl;
-            cout << "*If you do not know the ID of the use the search command (enter exit to return) >>" << endl;
+            cout << "*If you do not know the ID of the use the search command (enter exit to terminate) >>" << endl;
             cin >> input;
+            if (input == "exit")
+                break;
             id = atoi(input.c_str());
             do
             {
@@ -106,7 +109,7 @@ int main()
                         cout << "There is no such element" << endl;
                         break;
                 }
-                cout << "Would you like to do a change a different element? (y) >>" << endl;
+                cout << "Input y to change a different element or input any other character to terminate >>" << endl;
                 cin >> input;
                 repeat_2 = input == "y";
             } while (repeat_2);
@@ -126,7 +129,7 @@ int main()
             cout << "7: Stock number" << endl;
             cout << "Type in the element number >>" << endl;
             cin >> element;
-            cout << "Would you like the database to be sorted in ascending order? (y otherwise descending) >>" << endl;
+            cout << "Input y to do an ascending sort or enter any other character to do a descending sort >>" << endl;
             cin >> input;
             library.Sort(element, input == "y");
             break;
@@ -163,7 +166,7 @@ int main()
             cout << "There is no such command" << endl;
             break;
         }
-        cout << "Would you like to do a different command? (y) >>" << endl;
+        cout << "Input y to do a different command or input any other character to terminate >>" << endl;
         cin >> input;
         repeat_1 = input == "y";
     } while (repeat_1);

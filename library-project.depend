@@ -7,7 +7,7 @@
 1574087568 c:\prog\eng_101\library-project\book.h
 	<string>
 
-1574088160 source:c:\prog\eng_101\library-project\main.cpp
+1574143820 source:c:\prog\eng_101\library-project\main.cpp
 	"library.h"
 	<iostream>
 	<cstdlib>
@@ -19,12 +19,13 @@
 	<fstream>
 	<iostream>
 
-1574088692 source:c:\prog\eng_101\library-project\library.cpp
+1574144318 source:c:\prog\eng_101\library-project\library.cpp
 	"library.h"
 	<string>
 	<vector>
 	<fstream>
 	<iostream>
+	<cstdlib>
 
 1574093321 source:c:\users\Макс\desktop\library-project\book.cpp
 	"book.h"
