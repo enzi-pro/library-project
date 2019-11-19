@@ -6,7 +6,7 @@
 
 using namespace std;
 
-vector<string> split(string line) //could we replace this by a function that already exists?
+vector<string> split(string line)
 {
     vector<string> lines;
     string subString="";
@@ -31,7 +31,7 @@ Library::Library(string file_path)
     vector<string> lines;
     fstream file(file_path, ios::in);
     if(!file){
-        cout<<"ERROR"; // raise error different method
+        cout<<"Sorry, this file does not exist"<<endl;
     }
     for (int i=0;i<=127;i++)
     {
@@ -44,13 +44,11 @@ Library::Library(string file_path)
 void Library::Add(Book book)
 {
     books.push_back(book);
-    //! maksut: the function should get a book instance and append it to the end of the books array
 }
 
 void Library::Delete(int id)
 {
     books.erase(books.begin() + id);
-    //! maksut: the function should get an id of the element (index starts from 0) to be deleted and delete the book instance at that id in books
 }
 
 /*

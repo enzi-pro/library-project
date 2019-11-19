@@ -26,3 +26,30 @@
 	<fstream>
 	<iostream>
 
+1574093321 source:c:\users\Макс\desktop\library-project\book.cpp
+	"book.h"
+	<sstream>
+	<cstdlib>
+
+1574093321 c:\users\Макс\desktop\library-project\book.h
+	<string>
+
+1574096165 source:c:\users\Макс\desktop\library-project\main.cpp
+	"library.h"
+	<iostream>
+	<cstdlib>
+	<sstream>
+
+1574093321 c:\users\Макс\desktop\library-project\library.h
+	"book.h"
+	<vector>
+	<fstream>
+	<iostream>
+
+1574138384 source:c:\users\Макс\desktop\library-project\library.cpp
+	"library.h"
+	<string>
+	<vector>
+	<fstream>
+	<iostream>
+
