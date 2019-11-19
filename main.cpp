@@ -11,13 +11,13 @@ int main()
     //Add sort
     bool repeat_1 = false;
     bool repeat_2 = false;
+    cout << "Enter the path to the csv file >>" << endl;
+    cin >> input;
+    Library library(input);
+    string author, title, year, isbn, publisher, llc, num;
+    int id;
     do
     {
-        cout << "Enter the path to the csv file >>" << endl;
-        cin >> input;
-        Library library(input);
-        string author, title, year, isbn, publisher, llc, num;
-        int id;
         cout << "List of available commands:" << endl;
         cout << "1: Add" << endl;
         cout << "2: Delete" << endl;
@@ -47,7 +47,7 @@ int main()
             cin >> llc;
             cout << "Type in the number of these books in stock >>" << endl;
             cin >> num;
-            library.Add(Book(library.getCount() + 1, author, title, year, isbn, publisher, llc, num));
+            library.Add(Book(library.getCount(), author, title, year, isbn, publisher, llc, num));
             break;
         case 2:
             cout << "Choose the book to be deleted. Enter its ID in the database (0 indexed)" << endl;

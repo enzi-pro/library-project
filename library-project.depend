@@ -34,7 +34,7 @@
 1574093321 c:\users\Макс\desktop\library-project\book.h
 	<string>
 
-1574093321 source:c:\users\Макс\desktop\library-project\main.cpp
+1574096165 source:c:\users\Макс\desktop\library-project\main.cpp
 	"library.h"
 	<iostream>
 	<cstdlib>
@@ -46,7 +46,7 @@
 	<fstream>
 	<iostream>
 
-1574093472 source:c:\users\Макс\desktop\library-project\library.cpp
+1574138384 source:c:\users\Макс\desktop\library-project\library.cpp
 	"library.h"
 	<string>
 	<vector>
