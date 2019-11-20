@@ -12,12 +12,12 @@ class Library
     private:
         vector<Book> books;
     public:
+        void printBook();
         Library(string file);
         void Add(Book book);
         void Delete(int id);
-        /*
-        int * Search( idk develop a solution );
-        void Sort(int attr, bool ascending = true);
+        int Search(Book book);
+        void sortLibrary(int attr, string ascending);
         bool Issue(string isbn);
         bool Return(string isbn);
         */
