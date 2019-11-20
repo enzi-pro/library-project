@@ -16,7 +16,9 @@ class Book
         string llc;
         int num;
     public:
+        Book();
         Book(int id, string author, string title, string year, string isbn, string publisher, string llc, string num);
+        bool same_as(string author, string title, string year, string isbn, string publisher, string llc, string num);
         void setId(int id);
         void setId(string id);
         string getId();
@@ -34,7 +36,7 @@ class Book
         string getLlc();
         void setNum(int num);
         void setNum(string num);
-        string getNum();
+        int getNum();
         string toString();
 };
 
