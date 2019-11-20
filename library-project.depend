@@ -54,3 +54,33 @@
 	<fstream>
 	<iostream>
 
+1574254072 source:c:\users\yerdaulet\desktop\library-project\book.cpp
+	"book.h"
+	<sstream>
+	<cstdlib>
+
+1574253455 c:\users\yerdaulet\desktop\library-project\book.h
+	<string>
+
+1574253922 source:c:\users\yerdaulet\desktop\library-project\library.cpp
+	"library.h"
+	"book.h"
+	<string>
+	<vector>
+	<fstream>
+	<iostream>
+	<cstdlib>
+	<algorithm>
+
+1574253891 c:\users\yerdaulet\desktop\library-project\library.h
+	"book.h"
+	<vector>
+	<fstream>
+	<iostream>
+
+1574253962 source:c:\users\yerdaulet\desktop\library-project\main.cpp
+	"library.h"
+	<iostream>
+	<cstdlib>
+	<sstream>
+

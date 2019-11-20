@@ -4,6 +4,11 @@
 
 using namespace std;
 
+Book::Book(){
+    id = 0;
+    num = -100;
+}
+
 Book::Book(int id, string author, string title, string year, string isbn, string publisher, string llc, string num)
 {
     this->id = id;
@@ -81,6 +86,20 @@ string Book::getPublisher()
     return this->publisher;
 }
 
+bool good(string a, string b) {
+    string s;
+    for (int i = 0; i < a.size(); i++) {
+        if (isdigit(a[i])) {
+            s += a[i];
+        } else {
+            if (s == b) return true;
+            s = "";
+        }
+    }
+    if (s == b) return true;
+    return false;
+}
+
 void Book::setLlc(string llc)
 {
     this->llc = llc;
@@ -101,14 +120,35 @@ void Book::setNum(string num)
     this->num = atoi(num.c_str());;
 }
 
-string Book::getNum()
+bool Book::same_as(string author, string title, string year, string isbn, string publisher, string llc, string num)
 {
-    return static_cast<ostringstream*>( &(ostringstream() << this->num) )->str();
+    if (!author.empty() && this->author != author)
+        return false;
+    if (!title.empty() && this->title != title)
+        return false;
+    if (!year.empty() && !good(this->year, year))
+        return false;
+    if (!isbn.empty() && !good(this->isbn, isbn))
+        return false;
+    if (!publisher.empty() && this->publisher != publisher)
+        return false;
+    if (!llc.empty() && this->llc != llc)
+        return false;
+    if (!num.empty() && this->num != atoi(num.c_str()))
+        return false;
+    return true;
 }
+
+int Book::getNum()
+{
+    //return static_cast<ostringstream*>( &(ostringstream() << this->num) )->str();
+    return this->num;
+}
+
 
 string Book::toString()
 {
     Book book = *this;
     return book.getId() + ": " + book.getAuthor() + ", " + book.getTitle() + ", " + book.getYear() + ", " + book.getIsbn() + ", "
-        + book.getPublisher() + ", " + book.getLlc() + ", " + "Stock: " + book.getNum();
+           + book.getPublisher() + ", " + book.getLlc() + ", " + "Stock: " + to_string(book.getNum());
 }

@@ -138,12 +138,13 @@ int main()
             cout << "Type in the number of these books in stock >>" << endl;
             getline(cin, num);
 
-            for(int j = 0; j < library.getCount(); j++)
+               for(int j = 0; j < library.getCount(); j++)
             {
                 if (library.getBook(j).same_as(author, title, year, isbn, publisher, llc, num)) {
                     cout<<library.getBook(j).toString()<<endl;
                 }
             }
+
             break;
         }
         case 5:
@@ -165,7 +166,7 @@ int main()
                 cout<<library.getBook(j).toString()<<endl;
             }
             break;
-        case 6:
+      /*  case 6:
             cout << "Type in the ISBN of the book >>" << endl;
             cin >> isbn;
             if (library.Issue(isbn))
@@ -186,8 +187,7 @@ int main()
             {
                 cout << "This book could not be found in the database" << endl;
             }
-            break;
-            */
+            break; */
         case 8:
             for(int j = 1; j < library.getCount(); j++)
             {

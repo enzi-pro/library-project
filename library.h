@@ -16,11 +16,10 @@ class Library
         Library(string file);
         void Add(Book book);
         void Delete(int id);
-        int Search(Book book);
         void sortLibrary(int attr, string ascending);
+        void Search(Book book);
         bool Issue(string isbn);
         bool Return(string isbn);
-        */
         Book getBook(int id);
         int getCount();
 };

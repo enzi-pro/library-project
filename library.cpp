@@ -117,7 +117,7 @@ void Library::Search(Book x)
 {
 
 }
-
+/*
 bool Library::Issue(string isbn)
 {
     temirlan: the function should get the isbn number and decrement the num of the book instance found in the db using search() function
