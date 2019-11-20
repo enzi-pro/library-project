@@ -1,12 +1,35 @@
 #include "library.h"
+#include "book.h"
 #include <string>
 #include <vector>
 #include <fstream>
 #include <iostream>
 #include <cstdlib>
+#include <algorithm>
 
 using namespace std;
 
+bool cmp_author(Book one, Book two) {
+    return one.getAuthor() < two.getAuthor();
+}
+bool cmp_title(Book one, Book two) {
+    return one.getTitle() < two.getTitle();
+}
+bool cmp_year(Book one, Book two) {
+    return one.getYear() < two.getYear();
+}
+bool cmp_publisher(Book one, Book two) {
+    return one.getPublisher() < two.getPublisher();
+}
+bool cmp_llc(Book one, Book two) {
+    return one.getLlc() < two.getLlc();
+}
+bool cmp_num(Book one, Book two) {
+    return one.getNum() < two.getNum();
+}
+bool cmp_isbn(Book one, Book two) {
+    return one.getIsbn() < two.getIsbn();
+}
 vector<string> split(string line)
 {
     vector<string> lines;
@@ -42,6 +65,11 @@ Library::Library(string file_path)
     }
 }
 
+void Library::printBook() {
+    for(int i = 0; i < books.size(); i++) {
+        cout << books[i].toString() << "\n";
+    }
+}
 void Library::Add(Book book)
 {
     books.push_back(book);
@@ -55,21 +83,39 @@ void Library::Delete(int id)
         books[j].setId(atoi(books[j].getId().c_str()) - 1);
     }
 }
-
-/*
-int * Library::Search(! idk develop a solution )
+void Library::sortLibrary(int attr, string order)
 {
-    yerdaulet: the function should get (1-6) attributes for author, title, year, isbn, publisher and llc
-    idk how to implement the getting of the functions, come up with a solution and lets discuss it in our whatsapp group
-    when you check the strings use string.find(value)!=string::npos (google find() method online), instead of ==
-    returns the findings as an array of book ids in the books
+    if(attr == 1) {
+        sort(books.begin(), books.end(), cmp_author);
+    }
+    if(attr == 2) {
+        sort(books.begin(), books.end(), cmp_title);
+    }
+    if(attr == 3) {
+        sort(books.begin(), books.end(), cmp_year);
+    }
+    if(attr == 4) {
+        sort(books.begin(), books.end(), cmp_isbn);
+    }
+    if(attr == 5) {
+        sort(books.begin(), books.end(), cmp_publisher);
+    }
+    if(attr == 6) {
+        sort(books.begin(), books.end(), cmp_llc);
+    }
+    if(attr == 7) {
+        sort(books.begin(), books.end(), cmp_num);
+    }
+    if(order != "y") {
+        reverse(books.begin(), books.end());
+    }
+
 }
 
-void Library::Sort(int attr, bool ascending = true)
+
+void Library::Search(Book x)
 {
-    yerdaulet: the function should get the attribute id (1 author, 2 title, 3 year, 4 isbn, 5 publisher, 6 llc)
-    and sort the books of this instance
-    if ascending it should sort in ascending order, if NOT ascending it should sort in descending order
+
 }
 
 bool Library::Issue(string isbn)
