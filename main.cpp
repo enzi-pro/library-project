@@ -72,7 +72,7 @@ int main()
                 cout << "4: ISBN = " << library.getBook(id).getIsbn() << endl;
                 cout << "5: Publisher = " << library.getBook(id).getPublisher() << endl;
                 cout << "6: LLC = " << library.getBook(id).getLlc() << endl;
-                cout << "7: Stock number = " << static_cast<ostringstream*>( &(ostringstream() << library.getBook(id).getNum()) )->str() << endl;
+                cout << "7: Stock number = " << library.getBook(id).getNum()/*static_cast<ostringstream*>( &(ostringstream() << library.getBook(id).getNum()) )->str()*/ << endl;
                 cout << "Type in the element number >>" << endl;
                 cin >> element;
                 switch (element)
@@ -114,10 +114,38 @@ int main()
                 repeat_2 = input == "y";
             } while (repeat_2);
             break;
-            /*
-        case 4:
-            in the works
+        case 4: {
+            cin.ignore();
+            cout << "// If you do not know the parts leave it empty " << endl;
+            cout << "Type in the author of the book>>" << endl;
+            getline(cin, author);
+
+            cout << "Type in the title of the book >>" << endl;
+            getline(cin, title);
+
+            cout << "Type in the year the book was published >>" << endl;
+            getline(cin, year);
+
+            cout << "Type in the ISBN of the book >>" << endl;
+            getline(cin, isbn);
+
+            cout << "Type in the publisher of the book >>" << endl;
+            getline(cin, publisher);
+
+            cout << "Type in the LLC of the book >>" << endl;
+            getline(cin, llc);
+
+            cout << "Type in the number of these books in stock >>" << endl;
+            getline(cin, num);
+
+            for(int j = 0; j < library.getCount(); j++)
+            {
+                if (library.getBook(j).same_as(author, title, year, isbn, publisher, llc, num)) {
+                    cout<<library.getBook(j).toString()<<endl;
+                }
+            }
             break;
+        }
         case 5:
             cout << "Choose the element to be used as the sorting attribute" << endl;
             cout << "1: Author" << endl;
@@ -131,7 +159,11 @@ int main()
             cin >> element;
             cout << "Input y to do an ascending sort or enter any other character to do a descending sort >>" << endl;
             cin >> input;
-            library.Sort(element, input == "y");
+            library.sortLibrary(element, input);
+            for(int j = 0; j < library.getCount(); j++)
+            {
+                cout<<library.getBook(j).toString()<<endl;
+            }
             break;
         case 6:
             cout << "Type in the ISBN of the book >>" << endl;
