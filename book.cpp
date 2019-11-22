@@ -82,20 +82,6 @@ string Book::getPublisher()
     return this->publisher;
 }
 
-bool good(string a, string b) {
-    string s;
-    for (unsigned int i = 0; i < a.size(); i++) {
-        if (isdigit(a[i])) {
-            s += a[i];
-        } else {
-            if (s == b) return true;
-            s = "";
-        }
-    }
-    if (s == b) return true;
-    return false;
-}
-
 void Book::setLlc(string llc)
 {
     this->llc = llc;
