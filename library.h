@@ -12,15 +12,14 @@ class Library
     private:
         vector<Book> books;
     public:
-        void printBook();
+        Library();
         Library(string file);
         void Add(Book book);
         void Delete(int id);
-        int Search(Book book);
-        void sortLibrary(int attr, string ascending);
+        void Sort(int attr, bool ascending);
+        vector<Book> Search(string author, string title, string year, string isbn, string publisher, string llc, string num);
         bool Issue(string isbn);
         bool Return(string isbn);
-        */
         Book getBook(int id);
         int getCount();
 };

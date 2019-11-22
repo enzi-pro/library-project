@@ -28,6 +28,7 @@ void Book::setId(string id)
 
 string Book::getId()
 {
+    // static_cast was used because of a compiler error with the to_string method
     return static_cast<ostringstream*>( &(ostringstream() << this->id) )->str();
 }
 
@@ -81,6 +82,20 @@ string Book::getPublisher()
     return this->publisher;
 }
 
+bool good(string a, string b) {
+    string s;
+    for (unsigned int i = 0; i < a.size(); i++) {
+        if (isdigit(a[i])) {
+            s += a[i];
+        } else {
+            if (s == b) return true;
+            s = "";
+        }
+    }
+    if (s == b) return true;
+    return false;
+}
+
 void Book::setLlc(string llc)
 {
     this->llc = llc;
@@ -101,14 +116,35 @@ void Book::setNum(string num)
     this->num = atoi(num.c_str());;
 }
 
-string Book::getNum()
+bool Book::isEqual(string author, string title, string year, string isbn, string publisher, string llc, string num)
 {
-    return static_cast<ostringstream*>( &(ostringstream() << this->num) )->str();
+    if (!author.empty() && this->author.find(author) == string::npos)
+        return false;
+    if (!title.empty() && this->title.find(title) == string::npos)
+        return false;
+    if (!year.empty() && this->year.find(year) == string::npos)
+        return false;
+    if (!isbn.empty() && this->isbn.find(isbn) == string::npos)
+        return false;
+    if (!publisher.empty() && this->publisher.find(publisher) == string::npos)
+        return false;
+    if (!llc.empty() && this->llc.find(llc) == string::npos)
+        return false;
+    if (!num.empty() && this->num != atoi(num.c_str()))
+        return false;
+    return true;
 }
+
+int Book::getNum()
+{
+    return this->num;
+}
+
 
 string Book::toString()
 {
+    // static_cast was used because of a compiler error with the to_string method
     Book book = *this;
     return book.getId() + ": " + book.getAuthor() + ", " + book.getTitle() + ", " + book.getYear() + ", " + book.getIsbn() + ", "
-        + book.getPublisher() + ", " + book.getLlc() + ", " + "Stock: " + book.getNum();
+           + book.getPublisher() + ", " + book.getLlc() + ", " + "Stock: " + static_cast<ostringstream*>( &(ostringstream() << book.getNum()) )->str();
 }

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <algorithm>
+#include <stdexcept>
 
 using namespace std;
 
@@ -34,7 +35,7 @@ vector<string> split(string line)
 {
     vector<string> lines;
     string subString="";
-    for(unsigned int i=0;i<line.size();i++)
+    for(unsigned int i=0; i<line.size(); i++)
     {
         if(line[i] !=';')
         {
@@ -49,27 +50,26 @@ vector<string> split(string line)
     return lines;
 }
 
+Library::Library()
+{
+
+}
+
 Library::Library(string file_path)
 {
     string line;
     vector<string> lines;
     fstream file(file_path, ios::in);
     if(!file){
-        cout<<"Sorry, this file does not exist"<<endl;
+        throw invalid_argument("This file does not exist");
     }
-    for (int i=0;i<=127;i++)
+    while(getline(file, line))
     {
-        getline(file, line);
         lines = split(line);
         books.push_back(Book(books.size(),lines[1],lines[2],lines[3],lines[4],lines[5],lines[6],lines[7]));
     }
 }
 
-void Library::printBook() {
-    for(int i = 0; i < books.size(); i++) {
-        cout << books[i].toString() << "\n";
-    }
-}
 void Library::Add(Book book)
 {
     books.push_back(book);
@@ -83,55 +83,87 @@ void Library::Delete(int id)
         books[j].setId(atoi(books[j].getId().c_str()) - 1);
     }
 }
-void Library::sortLibrary(int attr, string order)
+
+void Library::Sort(int attr, bool ascending)
 {
     if(attr == 1) {
         sort(books.begin(), books.end(), cmp_author);
     }
-    if(attr == 2) {
+    else if(attr == 2) {
         sort(books.begin(), books.end(), cmp_title);
     }
-    if(attr == 3) {
+    else if(attr == 3) {
         sort(books.begin(), books.end(), cmp_year);
     }
-    if(attr == 4) {
+    else if(attr == 4) {
         sort(books.begin(), books.end(), cmp_isbn);
     }
-    if(attr == 5) {
+    else if(attr == 5) {
         sort(books.begin(), books.end(), cmp_publisher);
     }
-    if(attr == 6) {
+    else if(attr == 6) {
         sort(books.begin(), books.end(), cmp_llc);
     }
-    if(attr == 7) {
+    else if(attr == 7) {
         sort(books.begin(), books.end(), cmp_num);
     }
-    if(order != "y") {
+    else
+    {
+        return;
+    }
+    if(!ascending)
+    {
         reverse(books.begin(), books.end());
     }
-
+    for(int j = 0; j < this->getCount(); j++)
+    {
+        books[j].setId(j);
+    }
 }
 
-
-void Library::Search(Book x)
+vector<Book> Library::Search(string author, string title, string year, string isbn, string publisher, string llc, string num)
 {
-
+    vector<Book> searchResult;
+    for(int i = 1; i != this->getCount(); i++)
+    {
+        if (books[i].isEqual(author, title, year, isbn, publisher, llc, num))
+        {
+            searchResult.push_back(books[i]);
+        }
+    }
+    return searchResult;
 }
 
 bool Library::Issue(string isbn)
 {
-    temirlan: the function should get the isbn number and decrement the num of the book instance found in the db using search() function
-    returns true if there is 1 or more num in the book, returns false if the book was not found or its num is 0
-    return true;
+    for(auto i = books.begin(); i != books.end(); i++)
+    {
+        if(i->getIsbn().find(isbn) != string::npos)
+        {
+            if(i->getNum() > 0)
+            {
+                i->setNum(i->getNum() - 1);
+                return true;
+            }
+            else
+                return false;
+        }
+    }
+    return false;
 }
 
 bool Library::Return(string isbn)
 {
-    temirlan: the function should get the isbn number and increment the num of the book instance found in the db using search() function
-    returns false if the book was not found, otherwise return true
-    return true;
+    for(auto i = books.begin(); i != books.end(); i++)
+    {
+        if(i->getIsbn().find(isbn) != string::npos)
+        {
+            i->setNum(i->getNum() + 1);
+            return true;
+        }
+    }
+    return false;
 }
-*/
 
 Book Library::getBook(int id)
 {
