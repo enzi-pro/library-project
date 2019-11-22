@@ -134,3 +134,10 @@ string Book::toString()
     return book.getId() + ": " + book.getAuthor() + ", " + book.getTitle() + ", " + book.getYear() + ", " + book.getIsbn() + ", "
            + book.getPublisher() + ", " + book.getLlc() + ", " + "Stock: " + static_cast<ostringstream*>( &(ostringstream() << book.getNum()) )->str();
 }
+
+string Book::toStringOut()
+{
+    Book book = *this;
+    return book.getId() + "; " + book.getAuthor() + "; " + book.getTitle() + "; " + book.getYear() + "; " + book.getIsbn() + "; "
+           + book.getPublisher() + "; " + book.getLlc() + "; " + static_cast<ostringstream*>( &(ostringstream() << book.getNum()) )->str();
+}

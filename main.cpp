@@ -37,6 +37,7 @@ int main()
         cout << "6: Issue" << endl;
         cout << "7: Return" << endl;
         cout << "8: Output the library" << endl;
+        cout << "9: Save the library" << endl;
         int command, element, temp;
         cout << "Type in the command number >>" << endl;
         try
@@ -270,6 +271,11 @@ int main()
             {
                 cout << library.getBook(j).toString() << endl;
             }
+            break;
+        case 9:
+            cout<<"Enter the name of the new CSV file"<<endl;
+            getline(cin, input);
+            library.save(input);
             break;
         default:
             cout << "There is no such command" << endl;

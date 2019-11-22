@@ -34,17 +34,17 @@ bool cmp_isbn(Book one, Book two) {
 vector<string> split(string line)
 {
     vector<string> lines;
-    string subString="";
+    string minilines="";
     for(unsigned int i=0; i<line.size(); i++)
     {
         if(line[i] !=';')
         {
-            subString += line[i];
+            minilines += line[i];
         }
         else
         {
-            lines.push_back(subString);
-            subString="";
+            lines.push_back(minilines);
+            minilines="";
         }
     }
     return lines;
@@ -57,7 +57,7 @@ Library::Library()
 
 Library::Library(string file_path)
 {
-    string line;
+    string line, newstring;
     vector<string> lines;
     fstream file(file_path, ios::in);
     if(!file){
@@ -163,6 +163,18 @@ bool Library::Return(string isbn)
         }
     }
     return false;
+}
+
+void Library::save(string input)
+{
+    ofstream newfile;
+    newfile.open(input);
+    newfile<<"#;Author;Title;Year;ISBN;Publisher;LLC;Stock;;;;;"<<endl;
+    for(int j = 1; j < books.size(); j++)
+            {
+                newfile << getBook(j).toStringOut() << endl;
+            }
+    newfile.close();
 }
 
 Book Library::getBook(int id)

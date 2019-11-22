@@ -20,6 +20,7 @@ class Library
         vector<Book> Search(string author, string title, string year, string isbn, string publisher, string llc, string num);
         bool Issue(string isbn);
         bool Return(string isbn);
+        void save(string input);
         Book getBook(int id);
         int getCount();
 };
