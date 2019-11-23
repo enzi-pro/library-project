@@ -34,7 +34,7 @@ bool cmp_isbn(Book one, Book two) {
     return one.getIsbn() < two.getIsbn();
 }
 
-vector<string> split(string line)
+vector<string> cut(string line)
 {
     vector<string> lines;
     string minilines="";
@@ -65,7 +65,7 @@ Library::Library(string file_path)
     }
     while(getline(file, line))
     {
-        lines = split(line);
+        lines = cut(line);
         books.push_back(Book(books.size(),lines[1],lines[2],lines[3],lines[4],lines[5],lines[6],lines[7]));
     }
 }

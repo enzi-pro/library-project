@@ -13,7 +13,7 @@ int main()
     bool repeat_commands = false;
     bool repeat_elements = false;
     bool repeat_error = false;
-    cout << "WELCOME TO THE LIBRARY MANAGEMENT SYSTEM" << endl;
+    cout << "***WELCOME TO THE LIBRARY MANAGEMENT SYSTEM***" << endl;
     cout << "Please, enter the path to the CSV file >>" << endl;
     getline(cin, input);
     Library library;

@@ -32,12 +32,12 @@
 	<algorithm>
 	<stdexcept>
 
-1574444984 source:c:\users\Макс\desktop\library-project\book.cpp
+1574509519 source:c:\users\Макс\desktop\library-project\book.cpp
 	"book.h"
 	<sstream>
 	<cstdlib>
 
-1574443777 c:\users\Макс\desktop\library-project\book.h
+1574509519 c:\users\Макс\desktop\library-project\book.h
 	<string>
 
 1574445984 source:c:\users\Макс\desktop\library-project\main.cpp
@@ -48,13 +48,13 @@
 	<stdexcept>
 	<limits>
 
-1574445537 c:\users\Макс\desktop\library-project\library.h
+1574509519 c:\users\Макс\desktop\library-project\library.h
 	"book.h"
 	<vector>
 	<fstream>
 	<iostream>
 
-1574446099 source:c:\users\Макс\desktop\library-project\library.cpp
+1574509519 source:c:\users\Макс\desktop\library-project\library.cpp
 	"library.h"
 	"book.h"
 	<string>
