@@ -85,6 +85,7 @@ int main()
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             num = static_cast<ostringstream*>( &(ostringstream() << temp) )->str();
             library.Add(Book(library.getCount(), author, title, year, isbn, publisher, llc, num));
+            cout << title << " written by " << author << " has been added to the library!" << endl;
             break;
         case 2:
             cout << "DELETE A BOOK" << endl;
@@ -99,6 +100,7 @@ int main()
             }
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             library.Delete(id);
+            cout << "The book has been deleted from the library" << endl;
             break;
         case 3:
             cout << "MODIFY A BOOK" << endl;
@@ -184,6 +186,7 @@ int main()
                         break;
                 }
                 library.Modify(Book(id, author, title, year, isbn, publisher, llc, num));
+                cout << "The book was modified!" << endl;
                 cout << "Input y to change a different element or input any other character to terminate >>" << endl;
                 getline(cin, input);
                 repeat_elements = input == "y";
@@ -231,6 +234,7 @@ int main()
             cout << "Input y to do an ascending sort or enter any other character to do a descending sort >>" << endl;
             getline(cin, input);
             library.Sort(element, input == "y");
+            cout << "The library is now sorted!" << endl;
             break;
         case 6:
             cout << "ISSUE A BOOK" << endl;
@@ -262,9 +266,10 @@ int main()
             break;
         case 9:
             cout << "SAVE THE LIBRARY" << endl;
-            cout << "Enter the name of the new CSV file (do not forget to write .csv or .txt) >>" << endl;
+            cout << "Enter the name of the new CSV file (do not forget to write \'.csv\' or \'.txt\') >>" << endl;
             getline(cin, input);
             library.Save(input);
+            cout << "The library has been successfully saved to " << input << endl;
             break;
         default:
             cout << "There is no such command" << endl;
