@@ -119,12 +119,18 @@ int main()
             do
             {
                 cout << "Choose the element to be modified" << endl;
-                cout << "1: Author = " << library.getBook(id).getAuthor() << endl;
-                cout << "2: Title = " << library.getBook(id).getTitle() << endl;
-                cout << "3: Year = " << library.getBook(id).getYear() << endl;
-                cout << "4: ISBN = " << library.getBook(id).getIsbn() << endl;
-                cout << "5: Publisher = " << library.getBook(id).getPublisher() << endl;
-                cout << "6: LLC = " << library.getBook(id).getLlc() << endl;
+                author = library.getBook(id).getAuthor();
+                title = library.getBook(id).getTitle();
+                year = library.getBook(id).getYear();
+                isbn = library.getBook(id).getIsbn();
+                publisher = library.getBook(id).getPublisher();
+                llc = library.getBook(id).getLlc();
+                cout << "1: Author = " << author << endl;
+                cout << "2: Title = " << title << endl;
+                cout << "3: Year = " << year << endl;
+                cout << "4: ISBN = " << isbn << endl;
+                cout << "5: Publisher = " << publisher << endl;
+                cout << "6: LLC = " << llc << endl;
                 // static_cast was used because of a compiler error with the to_string method
                 cout << "7: Stock number = " << static_cast<ostringstream*>( &(ostringstream() << library.getBook(id).getNum()) )->str() << endl;
                 cout << "Type in the element number (the program will terminate if the input is not an integer) >>" << endl;
@@ -145,33 +151,27 @@ int main()
                 {
                     case 1:
                         cout << "Enter the new author >>" << endl;
-                        getline(cin, input);
-                        library.getBook(id).setAuthor(input);
+                        getline(cin, author);
                         break;
                     case 2:
                         cout << "Enter the new title >>" << endl;
-                        getline(cin, input);
-                        library.getBook(id).setTitle(input);
+                        getline(cin, title);
                         break;
                     case 3:
                         cout << "Enter the new year >>" << endl;
-                        getline(cin, input);
-                        library.getBook(id).setAuthor(input);
+                        getline(cin, year);
                         break;
                     case 4:
                         cout << "Enter the new ISBN >>" << endl;
-                        getline(cin, input);
-                        library.getBook(id).setIsbn(input);
+                        getline(cin, isbn);
                         break;
                     case 5:
                         cout << "Enter the new publisher >>" << endl;
-                        getline(cin, input);
-                        library.getBook(id).setPublisher(input);
+                        getline(cin, publisher);
                         break;
                     case 6:
                         cout << "Enter the new LLC >>" << endl;
-                        getline(cin, input);
-                        library.getBook(id).setLlc(input);
+                        getline(cin, llc);
                         break;
                     case 7:
                         cout << "Enter the number of these books in stock (the program will terminate if the input is not an integer) >>" << endl;
@@ -188,12 +188,12 @@ int main()
                             return -1;
                         }
                         cin.ignore();
-                        library.getBook(id).setNum(static_cast<ostringstream*>( &(ostringstream() << temp) )->str());
                         break;
                     default:
                         cout << "There is no such element" << endl;
                         break;
                 }
+                library.Modify(Book(id, author, title, year, isbn, publisher, llc, static_cast<ostringstream*>( &(ostringstream() << temp) )->str()));
                 cout << "Input y to change a different element or input any other character to terminate >>" << endl;
                 getline(cin, input);
                 repeat_elements = input == "y";

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1574489244 source:c:\prog\eng_101\library-project\book.cpp
+1574489361 source:c:\prog\eng_101\library-project\book.cpp
 	"book.h"
 	<sstream>
 	<cstdlib>
@@ -15,13 +15,13 @@
 	<stdexcept>
 	<limits>
 
-1574488825 c:\prog\eng_101\library-project\library.h
+1574496558 c:\prog\eng_101\library-project\library.h
 	"book.h"
 	<vector>
 	<fstream>
 	<iostream>
 
-1574488909 source:c:\prog\eng_101\library-project\library.cpp
+1574496588 source:c:\prog\eng_101\library-project\library.cpp
 	"library.h"
 	"book.h"
 	<string>

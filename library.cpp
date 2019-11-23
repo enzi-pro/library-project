@@ -29,9 +29,6 @@ bool cmp_publisher(Book one, Book two) {
 bool cmp_llc(Book one, Book two) {
     return one.getLlc() < two.getLlc();
 }
-bool cmp_num(Book one, Book two) {
-    return one.getNum() < two.getNum();
-}
 
 bool cmp_isbn(Book one, Book two) {
     return one.getIsbn() < two.getIsbn();
@@ -85,6 +82,11 @@ void Library::Delete(int id)
     {
         books[j].setId(atoi(books[j].getId().c_str()) - 1);
     }
+}
+
+void Library::Modify(Book book)
+{
+    books[atoi(book.getId().c_str())] = book;
 }
 
 void Library::Sort(int attr, bool ascending)

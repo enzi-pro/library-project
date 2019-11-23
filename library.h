@@ -16,6 +16,7 @@ class Library
         Library(string file);
         void Add(Book book);
         void Delete(int id);
+        void Modify(Book book);
         void Sort(int attr, bool ascending);
         vector<Book> Search(string author, string title, string year, string isbn, string publisher, string llc);
         bool Issue(string isbn);
