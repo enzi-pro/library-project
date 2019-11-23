@@ -37,6 +37,7 @@ class Book
         void setNum(string num);
         int getNum();
         string toString();
+        string toStringOut();
 };
 
 #endif // BOOK_H
