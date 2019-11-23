@@ -17,7 +17,7 @@ class Book
         int num;
     public:
         Book(int id, string author, string title, string year, string isbn, string publisher, string llc, string num);
-        bool isEqual(string author, string title, string year, string isbn, string publisher, string llc, string num);
+        bool isEqual(string author, string title, string year, string isbn, string publisher, string llc);
         void setId(int id);
         void setId(string id);
         string getId();
@@ -37,7 +37,7 @@ class Book
         void setNum(string num);
         int getNum();
         string toString();
-        string toStringOut();
+        string toCSV();
 };
 
 #endif // BOOK_H

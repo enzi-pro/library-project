@@ -39,7 +39,7 @@ int main()
         cout << "8: Output the library" << endl;
         cout << "9: Save the library" << endl;
         int command, element, temp;
-        cout << "Type in the command number >>" << endl;
+        cout << "Type in the command number (the program will terminate if the input is not an integer) >>" << endl;
         try
         {
             if (!(cin >> command))
@@ -68,7 +68,7 @@ int main()
             getline(cin, publisher);
             cout << "Type in the LLC of the book >>" << endl;
             getline(cin, llc);
-            cout << "Type in the number of these books in stock >>" << endl;
+            cout << "Type in the number of these books in stock (the program will terminate if the input is not an integer) >>" << endl;
             try
             {
                 if (!(cin >> temp))
@@ -85,7 +85,7 @@ int main()
             library.Add(Book(library.getCount(), author, title, year, isbn, publisher, llc, static_cast<ostringstream*>( &(ostringstream() << temp) )->str()));
             break;
         case 2:
-            cout << "Choose the book to be deleted. Enter its ID in the database" << endl;
+            cout << "Choose the book to be deleted. Enter its ID in the database (the program will terminate if the input is not an integer) >>" << endl;
             try
             {
                 if (!(cin >> id))
@@ -102,7 +102,7 @@ int main()
             library.Delete(id);
             break;
         case 3:
-            cout << "Choose the book to be modified. Enter its ID in the database" << endl;
+            cout << "Choose the book to be modified. Enter its ID in the database (the program will terminate if the input is not an integer) >>" << endl;
             try
             {
                 if (!(cin >> id))
@@ -127,7 +127,7 @@ int main()
                 cout << "6: LLC = " << library.getBook(id).getLlc() << endl;
                 // static_cast was used because of a compiler error with the to_string method
                 cout << "7: Stock number = " << static_cast<ostringstream*>( &(ostringstream() << library.getBook(id).getNum()) )->str() << endl;
-                cout << "Type in the element number >>" << endl;
+                cout << "Type in the element number (the program will terminate if the input is not an integer) >>" << endl;
                 try
                 {
                     if (!(cin >> element))
@@ -174,7 +174,7 @@ int main()
                         library.getBook(id).setLlc(input);
                         break;
                     case 7:
-                        cout << "Enter the number of these books in stock >>" << endl;
+                        cout << "Enter the number of these books in stock (the program will terminate if the input is not an integer) >>" << endl;
                         try
                         {
                             if (!(cin >> temp))
@@ -200,8 +200,8 @@ int main()
             } while (repeat_elements);
             break;
         case 4: {
-            cout << "*If you do not know the parts leave it empty " << endl;
-            cout << "Type in the author of the book>>" << endl;
+            cout << "*If you do not wish to input an element press Enter " << endl;
+            cout << "Type in the author of the book >>" << endl;
             getline(cin, author);
             cout << "Type in the title of the book >>" << endl;
             getline(cin, title);
@@ -213,11 +213,9 @@ int main()
             getline(cin, publisher);
             cout << "Type in the LLC of the book >>" << endl;
             getline(cin, llc);
-            cout << "Type in the number of these books in stock >>" << endl;
-            getline(cin, num);
-            vector<Book> searchResult = library.Search(author, title, year, isbn, publisher, llc, num);
+            vector<Book> searchResult = library.Search(author, title, year, isbn, publisher, llc);
             for(unsigned int j = 0; j < searchResult.size(); j++)
-                cout<<searchResult[j].toString()<<endl;
+                cout << searchResult[j].toString() <<endl;
             break;
         }
         case 5:
@@ -228,8 +226,7 @@ int main()
             cout << "4: ISBN" << endl;
             cout << "5: Publisher" << endl;
             cout << "6: LLC" << endl;
-            cout << "7: Stock number" << endl;
-            cout << "Type in the element number >>" << endl;
+            cout << "Type in the element number (the program will terminate if the input is not an integer) >>" << endl;
             try
             {
                 if (!(cin >> element))
@@ -273,9 +270,9 @@ int main()
             }
             break;
         case 9:
-            cout<<"Enter the name of the new CSV file"<<endl;
+            cout << "Enter the name of the new CSV file (do not forget to write .csv or .txt) >>" << endl;
             getline(cin, input);
-            library.save(input);
+            library.Save(input);
             break;
         default:
             cout << "There is no such command" << endl;

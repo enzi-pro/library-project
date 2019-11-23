@@ -102,7 +102,7 @@ void Book::setNum(string num)
     this->num = atoi(num.c_str());;
 }
 
-bool Book::isEqual(string author, string title, string year, string isbn, string publisher, string llc, string num)
+bool Book::isEqual(string author, string title, string year, string isbn, string publisher, string llc)
 {
     if (!author.empty() && this->author.find(author) == string::npos)
         return false;
@@ -115,8 +115,6 @@ bool Book::isEqual(string author, string title, string year, string isbn, string
     if (!publisher.empty() && this->publisher.find(publisher) == string::npos)
         return false;
     if (!llc.empty() && this->llc.find(llc) == string::npos)
-        return false;
-    if (!num.empty() && this->num != atoi(num.c_str()))
         return false;
     return true;
 }
@@ -131,11 +129,17 @@ string Book::toString()
 {
     // static_cast was used because of a compiler error with the to_string method
     Book book = *this;
-    return book.getId() + ": " + book.getAuthor() + ", " + book.getTitle() + ", " + book.getYear() + ", " + book.getIsbn() + ", "
-           + book.getPublisher() + ", " + book.getLlc() + ", " + "Stock: " + static_cast<ostringstream*>( &(ostringstream() << book.getNum()) )->str();
+    return book.getId() + ": "
+         + book.getAuthor() + ((!book.getAuthor().empty()) ? ", " : "")
+         + book.getTitle() + ((!book.getTitle().empty()) ? ", " : "")
+         + book.getYear() + ((!book.getYear().empty()) ? ", " : "")
+         + book.getIsbn() + ((!book.getIsbn().empty()) ? ", " : "")
+         + book.getPublisher() + ((!book.getPublisher().empty()) ? ", " : "")
+         + book.getLlc() + ((!book.getLlc().empty()) ? ", " : "")
+         + "Stock: " + static_cast<ostringstream*>( &(ostringstream() << book.getNum()) )->str();
 }
 
-string Book::toStringOut()
+string Book::toCSV()
 {
     Book book = *this;
     return book.getId() + "; " + book.getAuthor() + "; " + book.getTitle() + "; " + book.getYear() + "; " + book.getIsbn() + "; "

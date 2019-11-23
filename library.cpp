@@ -13,24 +13,30 @@ using namespace std;
 bool cmp_author(Book one, Book two) {
     return one.getAuthor() < two.getAuthor();
 }
+
 bool cmp_title(Book one, Book two) {
     return one.getTitle() < two.getTitle();
 }
+
 bool cmp_year(Book one, Book two) {
     return one.getYear() < two.getYear();
 }
+
 bool cmp_publisher(Book one, Book two) {
     return one.getPublisher() < two.getPublisher();
 }
+
 bool cmp_llc(Book one, Book two) {
     return one.getLlc() < two.getLlc();
 }
 bool cmp_num(Book one, Book two) {
     return one.getNum() < two.getNum();
 }
+
 bool cmp_isbn(Book one, Book two) {
     return one.getIsbn() < two.getIsbn();
 }
+
 vector<string> split(string line)
 {
     vector<string> lines;
@@ -50,14 +56,11 @@ vector<string> split(string line)
     return lines;
 }
 
-Library::Library()
-{
-
-}
+Library::Library(){}
 
 Library::Library(string file_path)
 {
-    string line, newstring;
+    string line;
     vector<string> lines;
     fstream file(file_path, ios::in);
     if(!file){
@@ -104,9 +107,6 @@ void Library::Sort(int attr, bool ascending)
     else if(attr == 6) {
         sort(books.begin(), books.end(), cmp_llc);
     }
-    else if(attr == 7) {
-        sort(books.begin(), books.end(), cmp_num);
-    }
     else
     {
         return;
@@ -121,12 +121,12 @@ void Library::Sort(int attr, bool ascending)
     }
 }
 
-vector<Book> Library::Search(string author, string title, string year, string isbn, string publisher, string llc, string num)
+vector<Book> Library::Search(string author, string title, string year, string isbn, string publisher, string llc)
 {
     vector<Book> searchResult;
     for(int i = 1; i != this->getCount(); i++)
     {
-        if (books[i].isEqual(author, title, year, isbn, publisher, llc, num))
+        if (books[i].isEqual(author, title, year, isbn, publisher, llc))
         {
             searchResult.push_back(books[i]);
         }
@@ -165,15 +165,13 @@ bool Library::Return(string isbn)
     return false;
 }
 
-void Library::save(string input)
+void Library::Save(string input)
 {
     ofstream newfile;
     newfile.open(input);
     newfile<<"#;Author;Title;Year;ISBN;Publisher;LLC;Stock;;;;;"<<endl;
     for(int j = 1; j < books.size(); j++)
-            {
-                newfile << getBook(j).toStringOut() << endl;
-            }
+        newfile << getBook(j).toCSV() << endl;
     newfile.close();
 }
 
