@@ -165,10 +165,10 @@ bool Library::Return(string isbn)
     return false;
 }
 
-void Library::Save(string input)
+void Library::Save(string name)
 {
     ofstream newfile;
-    newfile.open(input);
+    newfile.open(name);
     newfile<<"#;Author;Title;Year;ISBN;Publisher;LLC;Stock;;;;;"<<endl;
     for(int j = 1; j < books.size(); j++)
         newfile << getBook(j).toCSV() << endl;
